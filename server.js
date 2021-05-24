@@ -14,11 +14,16 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // data
+const allNotes = require('./db/db.json');
 
-// routes
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, './public/index.html')));
+// HTML routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/index.html'))
+});
 
-app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, './public/notes.html')));
+app.get('/notes', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/notes.html'))
+});
 
 // start the server
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
