@@ -18,12 +18,23 @@ const allNotes = require('./db/db.json');
 
 // HTML routes
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/index.html'))
+  res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
 app.get('/notes', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/notes.html'))
+  res.sendFile(path.join(__dirname, './public/notes.html'));
 });
 
+// API routes
+app.get('/api/notes', (req, res) => {
+  return res.json(allNotes);
+});
+
+app.post('/api/notes', (req, res) + {
+  
+})
+
 // start the server
-app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`App listening on PORT ${PORT}`);
+});
