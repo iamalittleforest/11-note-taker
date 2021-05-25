@@ -1,6 +1,8 @@
+// dependencies
 const path = require('path');
 
-function htmlRoutes(app) {
+// export html routes
+module.exports = function(app) {
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/index.html'));
   });
@@ -9,5 +11,3 @@ function htmlRoutes(app) {
     res.sendFile(path.join(__dirname, '../public/notes.html'));
   });
 }
-
-module.exports = htmlRoutes;
