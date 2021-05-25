@@ -1,7 +1,10 @@
+// dependencies
 const fs = require('fs');
 
-function apiRoutes(app) {
+// export api routes
+module.exports = function(app) {
 
+  // reads db.json and parses into JSON
   const allNotes = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'));
   
   app.get('/api/notes', (req, res) => {
@@ -12,5 +15,3 @@ function apiRoutes(app) {
     
   })
 }
-
-module.exports = apiRoutes;
