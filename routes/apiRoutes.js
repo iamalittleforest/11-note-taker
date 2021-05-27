@@ -15,9 +15,17 @@ module.exports = (app) => {
   
   // receive new note to save on the request body
   app.post('/api/notes', (req, res) => {
+    
+    // create newNote and add unique id
     const newNote = {...req.body, id: uuid()};
 
-    console.log(newNote);
-    res.json(newNote);
+    // add newNote to allNotes
+    allNotes.push(newNote);
+
+    // update db.json with newNote
+    fs.writeFileSync('./db/db.json', JSON.stringify(allNotes));
+
+    // sends allNotes as a JSON response
+    res.json(allNotes);
   })
 }
