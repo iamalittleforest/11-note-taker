@@ -22,7 +22,21 @@ module.exports = (app) => {
     // add newNote to allNotes
     allNotes.push(newNote);
 
-    // update db.json with newNote
+    // update db.json with updated allNotes
+    fs.writeFileSync('./db/db.json', JSON.stringify(allNotes));
+
+    // sends allNotes as a JSON response
+    res.json(allNotes);
+  });
+
+  // receive query parameter containing id of note to delete
+  app.delete('/api/notes/:id', (req, res) => {
+
+    // retrieve id of note
+    
+    // remove note with given id
+
+    // update db.json with updated allNotes
     fs.writeFileSync('./db/db.json', JSON.stringify(allNotes));
 
     // sends allNotes as a JSON response
