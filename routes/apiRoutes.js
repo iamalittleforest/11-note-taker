@@ -33,11 +33,11 @@ module.exports = (app) => {
   app.delete('/api/notes/:id', (req, res) => {
 
     // retrieve id of note
-    const noteId = req.params.id;
+    const noteId = parseInt(req.params.id);
     
     // remove note with given id
     allNotes.filter(note => {
-      note.id !== noteId;
+      parseInt(note.id) !== noteId;
     });
 
     // update db.json with updated allNotes
@@ -45,5 +45,5 @@ module.exports = (app) => {
 
     // sends allNotes as a JSON response
     res.json(allNotes);
-  })
+  });
 }
