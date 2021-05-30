@@ -36,14 +36,14 @@ module.exports = (app) => {
     const noteId = req.params.id.toString();
     
     // remove note with given id
-    allNotes.filter(note => {
+    const updatedNotes = allNotes.filter(note => {
       note.id.toString() !== noteId;
     });
 
     // update db.json with updated allNotes
-    fs.writeFileSync('./db/db.json', JSON.stringify(allNotes));
+    fs.writeFileSync('./db/db.json', JSON.stringify(updatedNotes));
 
     // sends allNotes as a JSON response
-    res.json(allNotes);
+    res.json(updatedNotes);
   });
 }
