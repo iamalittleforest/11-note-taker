@@ -1,5 +1,8 @@
 # 11 Note Taker
 
+## Link
+https://iamalittleforest-11-note-taker.herokuapp.com/
+
 ## Languages & Technologies
 * Express.js
 * Heroku
@@ -37,7 +40,7 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 <img src="assets/images/README-screenshot.png" alt="screenshot">
 
 ## Demo
-[Walkthrough Video](https://iamalittleforest.github.io/10-team-profile-generator/assets/images/README-walkthrough.mp4)
+<img src="assets/images/README-demo.gif" alt="demo">
 
 ## License
 MIT License
