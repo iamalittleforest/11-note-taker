@@ -18,6 +18,7 @@ module.exports = (app) => {
     
     // create newNote and add unique id
     const newNote = {...req.body, id: uuid()};
+    console.log(newNote.id);
 
     // add newNote to allNotes
     allNotes.push(newNote);
@@ -33,11 +34,12 @@ module.exports = (app) => {
   app.delete('/api/notes/:id', (req, res) => {
 
     // retrieve id of note
-    const noteId = req.params.id.toString();
+    const noteId = req.params.id;
+    console.log(noteId);
     
     // remove note with given id
     const updatedNotes = allNotes.filter(note => {
-      note.id.toString() !== noteId;
+      note.id !== noteId;
     });
 
     // update db.json with updated allNotes
@@ -45,5 +47,6 @@ module.exports = (app) => {
 
     // sends allNotes as a JSON response
     res.json(updatedNotes);
+    console.log(updatedNotes);
   });
 }
