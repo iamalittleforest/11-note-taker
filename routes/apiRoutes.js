@@ -33,8 +33,12 @@ module.exports = (app) => {
   app.delete('/api/notes/:id', (req, res) => {
 
     // retrieve id of note
+    const noteId = req.params.id;
     
     // remove note with given id
+    allNotes.filter(note => {
+      note.id !== noteId;
+    });
 
     // update db.json with updated allNotes
     fs.writeFileSync('./db/db.json', JSON.stringify(allNotes));
