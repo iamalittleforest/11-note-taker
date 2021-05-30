@@ -33,11 +33,11 @@ module.exports = (app) => {
   app.delete('/api/notes/:id', (req, res) => {
 
     // retrieve id of note
-    const noteId = parseInt(req.params.id);
+    const noteId = req.params.id.toString();
     
     // remove note with given id
     allNotes.filter(note => {
-      parseInt(note.id) !== noteId;
+      note.id.toString() !== noteId;
     });
 
     // update db.json with updated allNotes
