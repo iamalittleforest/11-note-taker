@@ -8,12 +8,12 @@ module.exports = (app) => {
   // reads db.json and parses into JSON
   let allNotes = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'));
 
-  // return notes as JSON
+  // GET - return notes as JSON
   app.get('/api/notes', (req, res) => {
     return res.json(allNotes);
   });
   
-  // receive new note to save on the request body
+  // POST - receive new note to save on the request body
   app.post('/api/notes', (req, res) => {
     
     // create newNote and add unique id
@@ -24,13 +24,15 @@ module.exports = (app) => {
     allNotes.push(newNote);
 
     // update db.json with updated allNotes
-    fs.writeFileSync('./db/db.json', JSON.stringify(allNotes));
+    fs.writeFile('./db/db.json', JSON.stringify(allNotes), (err) => {
+      if (err) throw err;
+    });
 
     // sends allNotes as a JSON response
     res.json(allNotes);
   });
 
-  // receive query parameter containing id of note to delete
+  // DELETE - receive query parameter containing id of note to delete
   app.delete('/api/notes/:id', (req, res) => {
 
     // retrieve id of note
@@ -38,12 +40,16 @@ module.exports = (app) => {
     console.log(noteId);
     
     // remove note with given id
-    allNotes = allNotes.filter(note => {
-      note.id !== noteId;
-    });
+    for(let i = 0; i < allNotes.length; i++) {
+      if(allNotes[i].id === noteId) {
+        allNotes.splice(noteId, 1);
+      }
+    }
 
     // update db.json with updated allNotes
-    fs.writeFileSync('./db/db.json', JSON.stringify(allNotes));
+    fs.writeFile('./db/db.json', JSON.stringify(allNotes), (err) => {
+      if (err) throw err;
+    });
 
     // sends allNotes as a JSON response
     res.json(allNotes);
