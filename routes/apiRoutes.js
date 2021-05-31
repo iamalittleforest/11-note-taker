@@ -18,7 +18,7 @@ module.exports = (app) => {
     
     // create newNote and add unique id
     const newNote = {...req.body, id: uuid()};
-    console.log(newNote.id);
+    // console.log(newNote.id);
 
     // add newNote to allNotes
     allNotes.push(newNote);
@@ -37,12 +37,12 @@ module.exports = (app) => {
 
     // retrieve id of note
     const noteId = req.params.id;
-    console.log(noteId);
+    // console.log(noteId);
     
     // remove note with given id
     for(let i = 0; i < allNotes.length; i++) {
       if(allNotes[i].id === noteId) {
-        allNotes.splice(noteId, 1);
+        allNotes.splice(i, 1);
       }
     }
 
@@ -53,6 +53,6 @@ module.exports = (app) => {
 
     // sends allNotes as a JSON response
     res.json(allNotes);
-    console.log(allNotes);
+    // console.log(allNotes);
   });
 }
