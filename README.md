@@ -1,4 +1,4 @@
-# 11 Note Taker
+# Note Taker
 
 ## Link
 https://iamalittleforest-11-note-taker.herokuapp.com/
@@ -9,7 +9,7 @@ https://iamalittleforest-11-note-taker.herokuapp.com/
 * Heroku
 
 ## Description
-This application can be used to write and save notes.
+An application that can be used to write and save notes.
 
 ## Screenshot
 <img src="assets/images/README-screenshot.png" alt="screenshot">
